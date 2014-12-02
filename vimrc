@@ -21,7 +21,7 @@ set linespace=2
 syntax on
 colorscheme vividchalk
 set anti " antialiasing on
-set gfn=Monaco:h11
+set gfn=Inconsolata:h11
 
 "slim =~ haml
 au BufNewFile,BufRead *.slim set filetype=haml
