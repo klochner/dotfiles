@@ -1,0 +1,2 @@
+#!/bin/bash
+git status -s | grep -P "^\s*D" | awk {'print $2'} | xargs git rm

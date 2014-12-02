@@ -1,0 +1,2 @@
+#!/bin/sh
+for k in `git branch -r|sed s/^..// | grep -v HEAD`;do echo `git log -1 --pretty=format:"%Cgreen%ci %Cred%cr%Creset" "$k"`\\t"$k";done|sort

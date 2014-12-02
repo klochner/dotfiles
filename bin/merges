@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+branch1, branch2 = if ARGV.length == 2
+                    [ARGV[0], ARGV[1]]
+                   elsif ARGV.length == 1
+                    ["origin/master", ARGV[0]]
+                   else
+                     ["origin/master", "HEAD"]
+                   end
+
+git_cmd = %Q{git log #{branch1}..#{branch2} --pretty=format:"%ae%x09%s" | grep Merge |  grep -v "'staging'" | grep -v "'master'"}
+merge_commits = `#{git_cmd}`.split("\n")
+author_and_branch_and_jira_stories = merge_commits.map do |s|
+  author, branch = [$1, $2] if s=~ /\A([^@]+)[^']+'([^']+)'.*\z/
+  unless branch
+    puts ["err",s].join("\t")
+    next
+  end
+  jira_ids = branch.scan(/\d+/)
+  [author, branch, jira_ids]
+end.compact
+max_author_size = author_and_branch_and_jira_stories.map(&:first).sort_by(&:size).last.size
+author_and_branch_and_jira_stories.sort_by(&:last).map do |author, branch, id_arr|
+  id_arr.map{|jira_id| [jira_id, author.rjust(max_author_size), branch].join("  ")}
+end.uniq.each{|s| puts s};nil

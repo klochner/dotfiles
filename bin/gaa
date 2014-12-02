@@ -1,0 +1,2 @@
+#!/bin/bash
+git status -s | grep -Pv "^\s*[DR]" | awk {'print $2'} | xargs git add
