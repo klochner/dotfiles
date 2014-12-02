@@ -6,23 +6,14 @@ case $TERM in
         PS1="bash\\$ "
         ;;
 esac
-export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/klochner/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
 
-export AWS_RDS_HOME=/Users/klochner/packages/RDSCli-1.4.007
-export AWS_CREDENTIAL_FILE=/Users/klochner/packages/RDSCli-1.4.007/cred.txt
-export LD_LIBRARY_PATH=$LIBRARY_OUTPUT_PATH
-export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
-export PYTHONPATH=$VTK_ROOT/Wrapping/Python:/Users/klochner/packages/VTK-build/bin
-export PYTHONPATH=/Users/klochner/packages/VTK-build/Wrapping/Python:/Users/klochner/packages/VTK-build/bin
-export JAVA_HOME=/Library/Java/Home
-export RESIN_HOME=/Users/klochner/packages/resin-pro-3.1.7a
-export ANT_HOME=/Users/klochner/packages/apache-ant-1.9.4
-export PATH=/usr/local/git/bin:/Users/klochner/bin/:$PATH:/usr/local/mysql/bin/:${AWS_RDS_HOME}/bin
-PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
+PATH="$PATH:/usr/local/sbin:/usr/sbin:/sbin"
+PATH="/usr/local/bin:$PATH"
+test -d "$HOME/bin" &&
+PATH="$HOME/bin:$PATH"
 
-#export RUBYOPT="-ropenssl"
 set -o vi
 function gv { /Applications/MacVim.app/Contents/MacOS/Vim -g $*; }
 function wtf { lynx -dump "http://www.urbandictionary.com/define.php?term=${1}" | sed -n "115,120 p"; }
