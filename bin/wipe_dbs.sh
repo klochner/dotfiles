@@ -1,0 +1,1 @@
+curl -vvv -d "{\"statements\":[{\"statement\":\"MATCH (a)-[rel]-(b), (c) DELETE rel, a, b, c\"}]}" -H "Accept: application/json; charset=UTF-8" -H "Content-Type: application/json" http://localhost:7474/db/data/transaction/commit

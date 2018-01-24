@@ -1,0 +1,1 @@
+git push --no-verify --set-upstream origin $(git status -b -s | awk {'print $2'})

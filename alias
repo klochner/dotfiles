@@ -1,14 +1,12 @@
-alias gl='git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --date=short'
 alias hibernateon='sudo pmset -a hibernatemode 1'
 alias hibernateoff='sudo pmset -a hibernatemode 0'
+alias redit="cd ~/projects/expedite-rails; gv"
 alias mroe="less"
+alias timeout="gtimeout"
 alias mig="bundle exec rake db:migrate"
 alias migt="bundle exec rake db:abort_if_pending_migrations"
 alias gs="git status"
-alias gd="git diff"
-alias gstat="git diff master --stat=180,100"
-alias gcm="git commit -m"
-alias merge="git mergetool -t opendiff"
 alias code_history='git log master --pretty=format:"###########   %cr ########  %s ######## " --stat'
-alias b2drestart="VBoxManage startvm --type headless boot2docker-vm"
-alias rprune="git branch -r --merged | grep -v master | sed 's/origin\///' | xargs -n 1 git push --delete origin"
+alias mou="open -a /Applications/Mou.app"
+alias mate="open -a /Applications/TextMate.app"
+alias lint="$(yarn bin)/eslint --config .eslintrc-imports"

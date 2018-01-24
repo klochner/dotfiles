@@ -1,11 +1,35 @@
 "set binary
 "set noeol
+set lines=150 columns=90
 
 let mapleader = ","
-filetype on
+filetype off
 set nocompatible
 compiler ruby
-execute pathogen#infect()
+"execute pathogen#infect()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'godlygeek/tabular'
+Plugin 'scrooloose/syntastic'
+call vundle#end()            " required
+syntax enable
+filetype plugin indent on    " required
+
+"Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_auto_loc_list = 0
+
+
 
 "show/hide trailing whitespace
 :highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
@@ -15,10 +39,11 @@ execute pathogen#infect()
 :nnoremap <Leader>sw :match ExtraWhitespace /\s\+$/<CR>
 :nnoremap <Leader>hw :match<CR>
 
+vnoremap # :s#^#\##<cr>
+vnoremap -# :s#^\###<cr>
 
 "fonts/colors
 set linespace=2
-syntax on
 colorscheme vividchalk
 set anti " antialiasing on
 set gfn=Inconsolata:h11
@@ -45,6 +70,7 @@ function s:CmdTFlush(...)
     CommandTFlush
   endif
 endfunction
+let g:CommandTWildIgnore=&wildignore . ",**/node_modules/*"
 
 "code indentation
 set autoindent
@@ -75,9 +101,6 @@ imap ;; <C-P>
 "split window vertically
 nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>s <C-w>s<C-w>l
-
-set path=/Users/klochner/projects/RMO/website-rest/**
-set path+=/Users/klochner/projects/RMO/website-rest/app/models/campaigns/**
 
 "vim
 set laststatus=2

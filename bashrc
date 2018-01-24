@@ -9,6 +9,10 @@ PATH="$HOME/.bin:$PATH"
 set -o vi
 function gv { /Applications/MacVim.app/Contents/MacOS/Vim -g $*; }
 function wtf { lynx -dump "http://www.urbandictionary.com/define.php?term=${1}" | sed -n "115,120 p"; }
+function title () {
+      TITLE=$*;
+      export PROMPT_COMMAND='echo -ne "\033]0;$TITLE\007"'
+}
 source ~/.alias
 
 case "$TERM" in
