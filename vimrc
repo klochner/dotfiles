@@ -7,13 +7,13 @@ filetype off
 set nocompatible
 compiler ruby
 "execute pathogen#infect()
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'godlygeek/tabular'
-Plugin 'scrooloose/syntastic'
-call vundle#end()            " required
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+"Plugin 'gmarik/Vundle.vim'
+"Plugin 'git://git.wincent.com/command-t.git'
+"Plugin 'godlygeek/tabular'
+"Plugin 'scrooloose/syntastic'
+"call vundle#end()            " required
 syntax enable
 filetype plugin indent on    " required
 

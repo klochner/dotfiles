@@ -9,4 +9,3 @@ alias gs="git status"
 alias code_history='git log master --pretty=format:"###########   %cr ########  %s ######## " --stat'
 alias mou="open -a /Applications/Mou.app"
 alias mate="open -a /Applications/TextMate.app"
-alias lint="$(yarn bin)/eslint --config .eslintrc-imports"
